@@ -120,6 +120,31 @@
 			</extension>
 		</extensions>
 		<plugins>
+		<plugin>
+			<groupId>org.codehaus.gmaven</groupId>
+			<artifactId>gmaven-plugin</artifactId>
+			<executions>
+			<execution>
+			<phase>generate-resources</phase>
+			<goals>
+			<goal>execute</goal>
+			</goals>
+			<configuration>
+			<source>
+			import groovy.xml.MarkupBuilder
+			def env = System.getenv()
+			def writer = new FileWriter(new File("/application/properties.xml"))
+			def xml = new MarkupBuilder(writer)
+			xml.mkp.xmlDeclaration(version: "1.0", encoding: "utf-8")
+			xml.properties() {
+			application_reference(version:pom.version, pom.artifactId)
+			user_reference(env['USER'])
+			}
+			</source>
+			</configuration>
+			</execution>
+			</executions>
+		</plugin>
 
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
