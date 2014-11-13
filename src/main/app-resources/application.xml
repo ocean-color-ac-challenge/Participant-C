@@ -29,7 +29,7 @@
     <node id="node_smacop">				
       <job id="SmacOp"></job>			
       <sources>
-        <source id="data" title="Data package URL" abstract="Data package OpenSearch Description Document URL" scope="runtime"  refid="cas:series">http://catalogue.terradue.int/catalogue/search/MER_RR__1P/description</source>
+        <source id="data" title="Data package URL" abstract="Data package OpenSearch Description Document URL" scope="runtime" refid="cas:series">https://challenges.esa.int/eceo/datapackage/RRPAR/description?key=9d79148d-3e17-414b-9983-e4cef9e88ec6</source>
       </sources>
       <parameters/>					
     </node>
