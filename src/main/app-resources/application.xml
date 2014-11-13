@@ -9,27 +9,27 @@
         <parameter id="format">BEAM-DIMAP</parameter>
 	<parameter id="startdate" title="Start date" abstract="Start date of the TOI. Used as queryable for the MERIS Level 1 catalogue" scope="runtime" type="opensearch" target="time:start">2012-04-05</parameter>
         <parameter id="enddate" title="End date" abstract="End date of the TOI. Used as queryable for the MERIS Level 1 catalogue" scope="runtime" type="opensearch" target="time:end">2012-04-06</parameter>
-        <parameter id="aerosolType" title="aerosolType" abstract="Aerosol type: CONTINENTAL or DESERT" scope="runtime">CONTINENTAL</parameter>
-        <parameter id="bandNames" title="bandNames" abstract="Bands to process as a comma separated list (e.g. radiance_2,radiance_3)" scope="runtime">radiance_2,radiance_3</parameter>
-        <parameter id="invalidPixel" title="invalidPixel" abstract="Default reflectance for invalid pixel (e.g. 0.0)" scope="runtime">0.0</parameter> 
-        <parameter id="maskExpression" title="maskExpression" abstract="Mask expression for the whole MERIS view" scope="runtime"></parameter>
-        <parameter id="surfPress" title="surfPress" abstract="Surface pressure (e.g. 1013.0)" scope="runtime">1013.0</parameter>
-        <parameter id="tauAero550" title="tauAero550" abstract="Aerosol optical depth (e.g. 0.2)" scope="runtime">0.2</parameter>
-        <parameter id="uH2o" title="uH2o" abstract="Relative humidity (e.g. 3.0)" scope="runtime">3.0</parameter>
-        <parameter id="uO3" title="uO3" abstract="Ozone content (e.g. 0.15)" scope="runtime">0.15</parameter>
-        <parameter id="useMerisADS" title="useMerisADS" abstract="Use ECMWF data in the MERIS ADS (true or false)" scope="runtime">false</parameter>
+        <parameter id="aerosolType" title="aerosolType" abstract="Aerosol type: CONTINENTAL or DESERT" scope="test">CONTINENTAL</parameter>
+        <parameter id="bandNames" title="bandNames" abstract="Bands to process as a comma separated list (e.g. radiance_2,radiance_3)" scope="test">radiance_1,radiance_2,radiance_3,radiance_4,radiance_5,radiance_6,radiance_7</parameter>
+        <parameter id="invalidPixel" title="invalidPixel" abstract="Default reflectance for invalid pixel (e.g. 0.0)" scope="test">0.0</parameter> 
+        <parameter id="maskExpression" title="maskExpression" abstract="Mask expression for the whole MERIS view" scope="test"></parameter>
+        <parameter id="surfPress" title="surfPress" abstract="Surface pressure (e.g. 1013.0)" scope="test">1013.0</parameter>
+        <parameter id="tauAero550" title="tauAero550" abstract="Aerosol optical depth (e.g. 0.2)" scope="test">0.2</parameter>
+        <parameter id="uH2o" title="uH2o" abstract="Relative humidity (e.g. 3.0)" scope="test">3.0</parameter>
+        <parameter id="uO3" title="uO3" abstract="Ozone content (e.g. 0.15)" scope="test">0.15</parameter>
+        <parameter id="useMerisADS" title="useMerisADS" abstract="Use ECMWF data in the MERIS ADS (true or false)" scope="test">true</parameter>
       </defaultParameters>
       <defaultJobconf>
         <property id="mapred.task.timeout">9900000000000</property>
       </defaultJobconf>
     </jobTemplate>
 </jobTemplates>	
- <workflow id="beam_atcorr" title="BEAM Atmos Correction" abstract="This example runs the SmacOp atmospheric correction">						
+  <workflow id="participant-c" title="Participant C" abstract="Participant C uses the BEAM SmacOp atmospheric correction with ECMWF data">						
     <workflowVersion>1.0</workflowVersion>
     <node id="node_smacop">				
       <job id="SmacOp"></job>			
       <sources>
-        <source refid="cas:series">http://catalogue.terradue.int/catalogue/search/MER_RR__1P/description</source>
+        <source id="data" title="Data package URL" abstract="Data package OpenSearch Description Document URL" scope="runtime"  refid="cas:series">http://catalogue.terradue.int/catalogue/search/MER_RR__1P/description</source>
       </sources>
       <parameters/>					
     </node>
