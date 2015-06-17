@@ -44,14 +44,14 @@ Select java 1.7 out of the menu options by typing the correct number (here it's 
 ```bash
 cd
 git clone git@github.com:ocean-color-ac-challenge/Participant-C.git
-cd Participant-A
+cd Participant-C
 mvn install
 ```
 
 * Install the application from rpm
 
 ```bash
-curl -L -O https://github.com/ocean-color-ac-challenge/Participant-C/releases/download/v0.35/Participant-C-x.xx-ciop.noarch.rpm
+curl -L -O https://github.com/ocean-color-ac-challenge/Participant-C/releases/download/vx.xx/Participant-C-x.xx-ciop.noarch.rpm
 sudo yum -y install Participant-C-x.xx-ciop.noarch.rpm
 ```
 
