@@ -1,0 +1,3 @@
+blue=not l1_flags.LAND_OCEAN ? log(0.05 + 0.21 * reflec_1 + 1.75 * reflec_2 + 0.47 * reflec_3 + 0.16 * reflec_4) : 0
+green=not l1_flags.LAND_OCEAN ? log(0.05 + 0.21 * reflec_3 + 0.50 * reflec_4 + reflec_5 + 0.38 * reflec_6) : 0
+red=not l1_flags.LAND_OCEAN ? log(0.05 + 0.35 * reflec_2 + 0.60 * reflec_5 + reflec_6 + 0.13 * reflec_7) : 0

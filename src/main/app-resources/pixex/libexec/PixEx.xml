@@ -1,0 +1,52 @@
+ <graph id="someGraphId">
+    <version>1.0</version>
+    <node id="someNodeId">
+      <operator>PixEx</operator>
+      <sources>
+        <sourceProducts>
+				<source>$variable</source>
+		</sourceProducts>
+      </sources>
+<parameters>
+    <sourceProductPaths>$variable_path/$variable</sourceProductPaths>
+    <exportBands>true</exportBands>
+    <exportTiePoints>false</exportTiePoints>
+    <exportMasks>false</exportMasks>
+    <coordinates>
+ <!--       <coordinate>
+            <name>Coord_0</name>
+            <latitude>0.0</latitude>
+            <longitude>-150.0</longitude>
+            <dateTime/>
+            <originalValues/>
+            <id>1</id>
+        </coordinate>
+			<coordinate>
+            <name>Coord_1</name>
+            <latitude>0.0</latitude>
+            <longitude>-160.0</longitude>
+            <dateTime/>
+            <originalValues/>
+            <id>2</id>
+        </coordinate>-->
+    </coordinates>
+    <timeDifference/>
+    <coordinatesFile>$coordinates</coordinatesFile>
+    <matchupFile/>
+    <windowSize>$windowSize</windowSize>
+    <outputDir>$output_path</outputDir>
+    <outputFilePrefix>$prefix</outputFilePrefix>
+    <expression>not l1_flags.LAND_OCEAN</expression>
+    <exportExpressionResult>false</exportExpressionResult>
+    <aggregatorStrategyType>$aggregatorStrategyType</aggregatorStrategyType>
+    <exportSubScenes>false</exportSubScenes>
+    <subSceneBorderSize>0</subSceneBorderSize>
+    <exportKmz>false</exportKmz>
+    <extractTimeFromFilename>false</extractTimeFromFilename>
+    <dateInterpretationPattern>yyyyMMdd</dateInterpretationPattern>
+    <filenameInterpretationPattern>*${startDate}*${endDate}*</filenameInterpretationPattern>
+    <includeOriginalInput>false</includeOriginalInput>
+    <scatterPlotVariableCombinations/>
+</parameters>
+</node>
+</graph>

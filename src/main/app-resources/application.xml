@@ -1,37 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application id="beam_atcorr">
   <jobTemplates>
-  
     <!-- BEAM Atmos Corr operator job template  -->
     <jobTemplate id="SmacOp">
       <streamingExecutable>/application/smacop/run.sh</streamingExecutable>
-      <defaultParameters>						
+      <defaultParameters>
         <parameter id="format">BEAM-DIMAP</parameter>
-	<parameter id="startdate" title="Start date" abstract="Start date of the TOI. Used as queryable for the MERIS Level 1 catalogue" scope="runtime" type="opensearch" target="time:start">2012-04-05</parameter>
-        <parameter id="enddate" title="End date" abstract="End date of the TOI. Used as queryable for the MERIS Level 1 catalogue" scope="runtime" type="opensearch" target="time:end">2012-04-06</parameter>
-        <parameter id="aerosolType" title="aerosolType" abstract="Aerosol type: CONTINENTAL or DESERT" scope="test">CONTINENTAL</parameter>
+        <parameter id="startdate" title="Start date" abstract="Start date of the TOI. Used as queryable for the MERIS Level 1 catalogue or data package (format ISO 8601 e.g. 2015-06-03T13:21:58Z)" scope="runtime" type="opensearch" target="time:start">2002-04-05</parameter>
+        <parameter id="enddate" title="End date" abstract="End date of the TOI. Used as queryable for the MERIS Level 1 catalogue or data package (format ISO 8601 e.g. 2015-06-03T13:21:58Z)" scope="runtime" type="opensearch" target="time:end">2015-01-06</parameter>
+        <parameter id="aerosolType" title="aerosolType" abstract="Aerosol type: CONTINENTAL or DESERT" scope="runtime">CONTINENTAL</parameter>
         <parameter id="bandNames" title="bandNames" abstract="Bands to process as a comma separated list (e.g. radiance_2,radiance_3)" scope="test">radiance_1,radiance_2,radiance_3,radiance_4,radiance_5,radiance_6,radiance_7</parameter>
-        <parameter id="invalidPixel" title="invalidPixel" abstract="Default reflectance for invalid pixel (e.g. 0.0)" scope="test">0.0</parameter> 
-        <parameter id="maskExpression" title="maskExpression" abstract="Mask expression for the whole MERIS view" scope="test"></parameter>
-        <parameter id="surfPress" title="surfPress" abstract="Surface pressure (e.g. 1013.0)" scope="test">1013.0</parameter>
-        <parameter id="tauAero550" title="tauAero550" abstract="Aerosol optical depth (e.g. 0.2)" scope="test">0.2</parameter>
-        <parameter id="uH2o" title="uH2o" abstract="Relative humidity (e.g. 3.0)" scope="test">3.0</parameter>
-        <parameter id="uO3" title="uO3" abstract="Ozone content (e.g. 0.15)" scope="test">0.15</parameter>
-        <parameter id="useMerisADS" title="useMerisADS" abstract="Use ECMWF data in the MERIS ADS (true or false)" scope="test">true</parameter>
+        <parameter id="invalidPixel" title="Default reflectance for invalid pixel" abstract="Default reflectance for invalid pixel (e.g. 0.0)" scope="test">0.0</parameter>
+        <parameter id="maskExpression" title="Mask expression for the MERIS whole view" abstract="Mask expression for the whole MERIS view" scope="test">not l1_flags.LAND_OCEAN</parameter>
+        <parameter id="surfPress" title="Surface pressure" abstract="Surface pressure (e.g. 1013.0)" scope="test">1013.0</parameter>
+        <parameter id="tauAero550" title="Aerosol optical depth" abstract="Aerosol optical depth (e.g. 0.2)" scope="runtime">0.1</parameter>
+        <parameter id="uH2o" title="Relative humidity" abstract="Relative humidity (e.g. 3.0)" scope="test">3.0</parameter>
+        <parameter id="uO3" title="Ozone content" abstract="Ozone content (e.g. 0.15)" scope="test">0.15</parameter>
+        <parameter id="useMerisADS" title="Use ECMWF data in the MERIS ADS" abstract="Flag to use ECMWF data in the MERIS ADS (true or false)" scope="runtime">true</parameter>
+        <parameter id="poi" title="List of POI for reflectance extraction" abstract="List of POIS (Name,Latitude,Longitude) separated by pipe (requires setting evaluate to true)" scope="runtime">BOUS,43.367,7.9|AAOT,45.314,12.508|MOBY,20.828,-157.193</parameter>
+        <parameter id="window" title="Side length of surrounding window (uneven)" abstract="The window size specifies the number of pixels surrounding the pixels derived from the given geographic coordinates to be exported">3</parameter>
+        <parameter id="aggregation" title="Pixel value aggregation method (with window size is larger than 1)" abstract="The aggregation methods that may be used are: min, exports the minimum of the window values; max, exports the maximum of the window values; mean, exports mean and standard deviation of the window values or median, exports the median of the window values">mean</parameter>
+        <parameter id="publishL2" title="Flag to trigger the publishing of Level 2 products generated" abstract="Flag to trigger the publishing of Level 2 products generated" scope="runtime">true</parameter>
+        <parameter id="pixex" title="Flag to extract POI reflectances" abstract="Flag to extract POI reflectances for evaluation purposes" scope="runtime">true</parameter>
       </defaultParameters>
       <defaultJobconf>
         <property id="mapred.task.timeout">9900000000000</property>
       </defaultJobconf>
     </jobTemplate>
-</jobTemplates>	
-  <workflow id="participant-c" title="Participant C" abstract="Participant C uses the BEAM SmacOp atmospheric correction with ECMWF data">						
+  </jobTemplates>
+  <workflow id="participant-a" title="Participant C" abstract="Participant C uses the BEAM SmacOp atmospheric correction with ECMWF data">
     <workflowVersion>1.0</workflowVersion>
-    <node id="node_smacop">				
-      <job id="SmacOp"></job>			
+    <node id="node_smacop">
+      <job id="SmacOp"/>
       <sources>
-        <source id="data" title="Data package URL" abstract="Data package OpenSearch Description Document URL" scope="runtime" refid="cas:series">https://challenges.esa.int/eceo/datapackage/RRPAR/description?key=9d79148d-3e17-414b-9983-e4cef9e88ec6</source>
+        <source id="source" abstract="Catalogue or Data package URL" title="Link to the Catalogue or Data package OpenSearch description document" scope="runtime" refid="cas:series">https://challenges.esa.int/eceo/datapackage/FRSPAR/description?key=495f181f-47d3-4668-b717-d36d4a560837</source>
+        <!--<source id="source" abstract="Catalogue or Data package URL" title="Link to the Catalogue or Data package OpenSearch description document" scope="runtime" refid="file:urls">/tmp/CONTEST3.list</source>-->
       </sources>
-      <parameters/>					
+      <parameters/>
     </node>
   </workflow>
 </application>
