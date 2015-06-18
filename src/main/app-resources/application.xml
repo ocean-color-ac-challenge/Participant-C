@@ -13,7 +13,7 @@
         <parameter id="invalidPixel" title="Default reflectance for invalid pixel" abstract="Default reflectance for invalid pixel (e.g. 0.0)" scope="test">0.0</parameter>
         <parameter id="maskExpression" title="Mask expression for the MERIS whole view" abstract="Mask expression for the whole MERIS view" scope="test">not l1_flags.LAND_OCEAN</parameter>
         <parameter id="surfPress" title="Surface pressure" abstract="Surface pressure (e.g. 1013.0)" scope="test">1013.0</parameter>
-        <parameter id="tauAero550" title="Aerosol optical depth" abstract="Aerosol optical depth (e.g. 0.2)" scope="runtime">0.1</parameter>
+        <parameter id="tauAero550" title="Aerosol optical depth" abstract="Aerosol optical depth (e.g. 0.2)" scope="runtime">0.3</parameter>
         <parameter id="uH2o" title="Relative humidity" abstract="Relative humidity (e.g. 3.0)" scope="test">3.0</parameter>
         <parameter id="uO3" title="Ozone content" abstract="Ozone content (e.g. 0.15)" scope="test">0.15</parameter>
         <parameter id="useMerisADS" title="Use ECMWF data in the MERIS ADS" abstract="Flag to use ECMWF data in the MERIS ADS (true or false)" scope="runtime">true</parameter>
@@ -28,7 +28,7 @@
       </defaultJobconf>
     </jobTemplate>
   </jobTemplates>
-  <workflow id="participant-a" title="Participant C" abstract="Participant C uses the BEAM SmacOp atmospheric correction with ECMWF data">
+  <workflow id="participant-c" title="Participant C" abstract="Participant C uses the BEAM SmacOp atmospheric correction with ECMWF data">
     <workflowVersion>1.0</workflowVersion>
     <node id="node_smacop">
       <job id="SmacOp"/>
