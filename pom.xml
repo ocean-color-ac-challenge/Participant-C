@@ -8,7 +8,7 @@
 	<packaging>rpm</packaging>
 	<name>${project.artifactId}</name>
 	<description>BEAM Atmospheric Correction Processing</description>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 
 	<scm>
 		<connection>scm:git:git@github.com:ocean-color-ac-challenge/${project.artifactId}.git</connection>
