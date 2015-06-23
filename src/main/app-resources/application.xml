@@ -33,7 +33,7 @@
     <node id="node_smacop">
       <job id="SmacOp"/>
       <sources>
-        <source id="source" abstract="Catalogue or Data package URL" title="Link to the Catalogue or Data package OpenSearch description document" scope="runtime" refid="cas:series">https://challenges.esa.int/eceo/datapackage/FRSPAR/description?key=495f181f-47d3-4668-b717-d36d4a560837</source>
+        <source id="source" abstract="Catalogue or Data package URL" title="Link to the Catalogue or Data package OpenSearch description document" scope="runtime" refid="cas:series">https://challenges.esa.int/eceo/data/package/FRSPAR/description?key=495f181f-47d3-4668-b717-d36d4a560837</source>
         <!--<source id="source" abstract="Catalogue or Data package URL" title="Link to the Catalogue or Data package OpenSearch description document" scope="runtime" refid="file:urls">/tmp/CONTEST3.list</source>-->
       </sources>
       <parameters/>
